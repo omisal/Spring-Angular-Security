@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-right">
+            <button class="btn btn-sm btn-outline-danger" (click)="logout()">Logout</button>
+        </div>
+        <div class="col-12">
+            <div class="jumbotron" *ngIf="user">
+                <h1>Welcome {{user.userName}}</h1>
+                <p>You have logged in with the following roles:</p>
+                <ul class="font-weight-bold">
+                    <li *ngFor="let role of user.roles">{{role.roleName}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

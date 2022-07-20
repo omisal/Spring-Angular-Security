@@ -1,0 +1,56 @@
+<div class="container-fluid">
+    <div class="row text-center">
+        <div class="col-lg-6 col-xs-12 col-sm-10 my-5 py-5 mx-auto">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <p class="mt-2 text-dark">Sign in to start your session</p>
+                    </div>
+                </div>
+                <form [formGroup]="form" (ngSubmit)="login()">
+                    <div class="row">
+                        <div class="col-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Username</mat-label>
+                                <input matInput placeholder="Your username" formControlName="username" required>
+                                <mat-error *ngIf="er['username'].invalid">
+                                    <span>Valid Username required</span>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Password</mat-label>
+                                <input [type]="hide ? 'password' : 'text'" matInput placeholder="Password" formControlName="password" required>
+                                <a mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                                    <i class="fa" [ngClass]="{'fa-eye': hide ,'fa-eye-slash': !hide }"></i>
+                                </a>
+                                <mat-error *ngIf="er['password'].invalid">
+                                    <span>Password required</span>
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <div class="row mt-1 mb-2">
+                                <div class="col-6">
+                                    <mat-checkbox>Remember me</mat-checkbox>
+                                </div>
+                                <div class="col-6" style="text-align: right;">
+                                    <a [routerLink]="['/forgot']" routerLinkActive="router-link-active">Forgot
+                                        Password?</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary btn-block" mat-raised-button [disabled]="form.invalid">
+                                <i class="fa"
+                                    [ngClass]="{'fa-spinner fa-spin': inProgress ,'fa-sign-in-alt': !inProgress }"></i>
+                                Sign in
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
